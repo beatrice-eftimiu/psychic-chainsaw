@@ -8,11 +8,11 @@ on:
   workflow_dispatch:
     # Inputs the workflow accepts.
     inputs:
-      name:
+      email:
         # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
+        description: 'Your email, where you want to receive your env vars'
         # Default value if no value is explicitly provided
-        default: 'World'
+        default: 'beatrice@wolfpack-digital.com'
         # Input has to be provided for the workflow to run
         required: true
 
@@ -35,7 +35,8 @@ jobs:
         password: ${{secrets.MAIL_PASSWORD}}
         subject: Github Actions job result
         # Literal body:
-        body: Build job of ${{github.repository}} completed successfully!
+        body: These are your env vars
+          1. TEST ${{secrets.TEST}}
         # Read file contents as body:
         to: beatrice@wolfpack-digital.com
         from: Luke Skywalker # <user@example.com>
